@@ -57,8 +57,6 @@ bot.on('message', (payload, reply) => {
     } else if (isTextMessage && messageText.toLowerCase().indexOf(witaiHandler) > -1){
         //test the witai command;
         witaiHandler("Get me to the nearest bar!");
-    }
-
     } else if (hour > 3 && hour < 7) {
         replyString = 'Go home ' + profile.first_name + ' - you\'re drunk!';
     } else if (openBars.length == 0) {
