@@ -36,16 +36,19 @@ bot.on('message', (payload, reply) => {
     let helpCommand = "help";
     let allCommand = "all";
     let everyCommand = "everything";
-    if (messageText.toLowerCase().indexOf(helpCommand) > -1) {
+
+    var isTextMessage = (messageText != null);
+
+    if (isTextMessage && messageText.toLowerCase().indexOf(helpCommand) > -1) {
         // Help...
         replyString = 'This is the trebles bot; commands are:\n\'help\' - displays this menu\n\'all\' - all open bars\n\'everything\' - every bar (even closed ones!)';
 
-    } else if (messageText.toLowerCase().indexOf(allCommand) > -1) {
+    } else if (isTextMessage && messageText.toLowerCase().indexOf(allCommand) > -1) {
         // Return all open bars
         replyString = '🍻';
         sendOpenBars(payload.sender.id);
 
-    } else if (messageText.toLowerCase().indexOf(everyCommand) > -1){
+    } else if (isTextMessage && messageText.toLowerCase().indexOf(everyCommand) > -1){
         // Return every bar, even closed ones
         replyString = '🍻';
         sendAllBars(payload.sender.id);
