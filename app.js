@@ -63,7 +63,10 @@ function getOpenBars(){
   var date = new Date();
   var hour = date.getHours();
   var minutes = date.getMinutes();
-  var currentTime = String(hour) + "" + String(minutes);
+
+  var currentTime = hour + "" + minutes;
+  currentTime = parseInt(currentTime);
+
   var openBars = [];
 
   //itterate through the bars array
@@ -82,9 +85,9 @@ function getOpenBars(){
 
 function isOpen(startTime, endTime, currentTime){
   //to handle the midnight to 4am slot (best time for drinking trebles responsibly...)
-  if(currentTime > 0 && currentTime < 4){
-    currentTime = currentTime + 24;
-    endTime = endTime + 24;
+  if(currentTime > 0 && currentTime < 400){
+    currentTime = currentTime + 2400;
+    endTime = endTime + 2400;
   }
 
   if(currentTime > startTime && currentTime < endTime){
