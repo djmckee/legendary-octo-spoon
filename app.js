@@ -26,7 +26,7 @@ bot.on('message', (payload, reply) => {
       console.log('the person is: ' +  JSON.stringify(profile));
 
     var bar = getRandomBar();
-    let text = 'Hey! I recommend ' + bar.name + '. It\'s pretty ' + bar.price + '. You can find it at ' + bar.location + '.';
+    let text = 'Hey ' + profile.first_name + '! I recommend ' + bar.name + '. It\'s pretty ' + bar.price + '. You can find it at ' + bar.location + '.';
     console.log('gonna send back: ' + text);
 
 
