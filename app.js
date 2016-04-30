@@ -62,7 +62,7 @@ function getOpenBars(){
   //itterate through the bars array
   for(var i=0; i < bars.length; i++){
     //if we're past the openTime and before the closeTime
-    if(isOpen(bars[i].startTime, bars[i].endTime, currentTime)){
+    if(isOpen(bars[i].openFrom, bars[i].closeAt, currentTime)){
        openBars.push(bars[i]);
     }
   }
