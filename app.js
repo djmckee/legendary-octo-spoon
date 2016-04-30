@@ -26,13 +26,21 @@ bot.on('message', (payload, reply) => {
       console.log('the person is: ' +  JSON.stringify(profile));
 
     var openBars = getOpenBars();
-    console.log('openbars = ' + openBars);
-    var bar = getRandomFromArray(openBars);
-    let text = 'Hey ' + profile.first_name + '! I recommend ' + bar.name + '. It\'s pretty ' + bar.price + '. You can find it at ' + bar.location + '.';
-    console.log('gonna send back: ' + text);
 
+    var replyString = "";
+    if (openBars.length == 0) {
+        // :'(
+        replyString = 'Hey ' + profile.first_name + '! Sorry, nothing\'s open right now - come back later for some tasty trebs...';
 
-    reply({ text }, (err) => {
+    } else {
+        console.log('openbars = ' + openBars);
+        var bar = getRandomFromArray(openBars);
+        replyString = 'Hey ' + profile.first_name + '! I recommend ' + bar.name + '. It\'s pretty ' + bar.price + '. You can find it at ' + bar.location + '.';
+        console.log('gonna send back: ' + text);
+
+    }
+
+    reply({ text: replyString }, (err) => {
       if (err) {
           console.log("error:" + JSON.stringify(err));
       }
@@ -56,14 +64,17 @@ function getOpenBars(){
   var hour = date.getHours();
   var minutes = date.getMinutes();
   var currentTime = String(hour) + "" + String(minutes);
-  var openBars;
+  var openBars = [];
 
   //itterate through the bars array
   for(var i=0; i < bars.length; i++){
     //if we're past the openTime and before the closeTime
     if(isOpen(bars[i].startTime, bars[i].endTime, currentTime)){
+        console.log("open: " + bars[i].name);
        openBars.push(bars[i]);
-    }
+   } else {
+       console.log("closed: " + bars[i].name);
+   }
   }
 
   return openBars;
