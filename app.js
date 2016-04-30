@@ -21,18 +21,20 @@ bot.on('message', (payload, reply) => {
 
   bot.getProfile(payload.sender.id, (err, profile) => {
       if (err) {
-          console.log("error:" + err);
+          console.log("error:" + err.toString());
       }
 
     var bar = getRandomBar();
     var replyString = 'Hey! I recommend ' + bar.name + '. It\'s pretty ' + bar.price + '. You can find it at ' + bar.location + '.';
+    console.log('gonna send back: ' + replyString);
+
 
     reply({ replyString }, (err) => {
       if (err) {
-          console.log("error:" + err);
+          console.log("error:" + err.toString());
       }
 
-      console.log(`Echoed back to ${profile.first_name} ${profile.last_name}: ${reply}`);
+      console.log(`Echoed back to ${profile.first_name} ${profile.last_name}: ${replyString}`);
   });
   });
 });
