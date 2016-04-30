@@ -84,6 +84,7 @@ function getOpenBars(){
 }
 
 function isOpen(startTime, endTime, currentTime){
+  console.log("currentTime: " + currentTime);
   //to handle the midnight to 4am slot (best time for drinking trebles responsibly...)
   if(currentTime > 0 && currentTime < 400){
     currentTime = currentTime + 2400;
