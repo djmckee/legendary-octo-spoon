@@ -41,12 +41,12 @@ bot.on('message', (payload, reply) => {
 
     } else if (messageText.toLowerCase().indexOf(allCommand) > -1) {
         // Return all open bars
-        replyString = 'Hey ' + profile.first_name + '! These bars are currently open...';
+        replyString = '🍻';
         sendOpenBars(payload.sender.id);
 
     } else if (messageText.toLowerCase().indexOf(everyCommand) > -1){
         // Return every bar, even closed ones
-        replyString = 'Hey ' + profile.first_name + '! These are all the bars (open & closed)...';
+        replyString = '🍻';
         sendAllBars(payload.sender.id);
 
     } else if (hour > 3 && hour < 7) {
