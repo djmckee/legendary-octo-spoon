@@ -100,7 +100,12 @@ function isOpen(startTime, endTime, currentTime){
   console.log("currentTime: " + currentTime);
   //to handle the midnight to 4am slot (best time for drinking trebles responsibly...)
   if(currentTime > 0 && currentTime < 400){
+    console.log("midnight handler executed")
     currentTime = currentTime + 2400;
+    endTime = endTime + 2400;
+  }
+  
+  if(endTime < 400){
     endTime = endTime + 2400;
   }
 
