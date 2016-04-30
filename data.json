@@ -84,6 +84,6 @@
     "description": "Large trebles bar based in The Gate, cheap during the week, expensive on the weekend",
     "openFrom": "1900",
     "closeAt": "0100",
-    "locationLatLong": {"latitude": 54.9724747, "longitude": -1.6184438999999884} 
+    "locationLatLong": {"latitude": 54.9724747, "longitude": -1.6184438999999884}
   }
 ]
