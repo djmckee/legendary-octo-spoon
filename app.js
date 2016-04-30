@@ -2,9 +2,47 @@ const http = require('http');
 const Bot = require('messenger-bot');
 const constants = require("./constants");
 const fs = require("fs");
+const geolib = require("geolib");
+const deepcopy = require("deepcopy");
+
+var geocoderProvider = 'google';
+var httpAdapter = 'https';
+// optional
+var extra = {
+    apiKey: constants.GOOGLE_API_KEY, // for Mapquest, OpenCage, Google Premier
+    formatter: null         // 'gpx', 'string', ...
+};
+
+var geocoder = require('node-geocoder')(geocoderProvider, httpAdapter, extra);
 
 //import the JSON file, and it give an array of bars
 var bars = JSON.parse(fs.readFileSync("data.json"));
+
+
+
+function geocodeBars() {
+    for (var i = 0; i < bars.length; i++) {
+        var bar = bars[i];
+        var addressString = bar.location + ', ' + bar.postcode;
+
+
+        geocoder.geocode(addressString, function(err, res) {
+            var j = deepcopy(i);
+            var barCopy = deepcopy(bar);
+            console.log(res);
+            var loc = res[0];
+            var coordinates = {latitude: loc.latitude, longitude: loc.longitude};
+            barCopy.location = loc;
+            console.log('geocoded ' + barCopy.name);
+            bars[i] = barCopy;
+        });
+
+
+
+    }
+}
+
+geocodeBars();
 
 let bot = new Bot({
   token: constants.PAGE_TOKEN,
@@ -69,8 +107,17 @@ bot.on('message', (payload, reply) => {
 
             let latitude = location["payload"]["coordinates"]["lat"];
             let longitude = location["payload"]["coordinates"]["long"];
-
             console.log('got location - latitude: ' + String(latitude) + ' longitude:' + String(longitude));
+
+            bar = nearestBarToLocation(latitude, longitude);
+
+            if (bar == null) {
+                console.log('couldn\'t find found nearest bar');
+
+                bar = getRandomFromArray();
+            } else {
+                console.log('found nearest bar');
+            }
 
             replyString = 'Hey ' + profile.first_name + '! Your nearest trebles bar is ' + bar.name + ', at ' + bar.location;
 
@@ -92,6 +139,24 @@ bot.on('message', (payload, reply) => {
   });
   });
 });
+
+
+function nearestBarToLocation(lat, long) {
+    var bar = null;
+    var location = {latitude: lat, longitude: long};
+    var shortestDistance = 100000000000;
+    for (var i = 0; i < bars.length; i++) {
+        var barN = bars[i];
+        var distance = geolib.getDistance(location, barN.location);
+
+        if (distance < shortestDistance) {
+            bar = barN;
+        }
+
+    }
+
+    return bar;
+}
 
 // Sends all open bars as a formatted string in inidiviual messages
 function sendOpenBars(userId) {

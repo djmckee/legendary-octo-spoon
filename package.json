@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "dependencies": {
-    "messenger-bot": "2.2.0"
+    "messenger-bot": "2.2.0",
+    "geolib": "2.0.20"
   }
 }
