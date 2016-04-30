@@ -256,7 +256,7 @@ function buildGoogleMapsUrl(barObject){
     var string;
 
     string = "https://www.google.co.uk/maps/place/";
-    var place = barObject.location + ", " + barObject.postcode;
+    var place = barObject.name + ", " + barObject.location + ", " + barObject.postcode;
     console.log(place);
     place = place.split(' ').join('+');
     place = place.split(',').join('+');
