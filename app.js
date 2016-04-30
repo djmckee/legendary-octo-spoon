@@ -36,9 +36,10 @@ bot.on('message', (payload, reply) => {
         console.log('openbars = ' + openBars);
         var bar = getRandomFromArray(openBars);
         replyString = 'Hey ' + profile.first_name + '! I recommend ' + bar.name + '. It\'s pretty ' + bar.price + '. You can find it at ' + bar.location + '.';
-        console.log('gonna send back: ' + text);
 
     }
+
+    console.log('gonna send back: ' + replyString);
 
     reply({ text: replyString }, (err) => {
       if (err) {
