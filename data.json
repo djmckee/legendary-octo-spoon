@@ -39,7 +39,7 @@
     "name": "Empress",
     "location": "1 The Side, Newcastle upon Tyne",
     "postcode": "NE1 1PR",
-    "price": "medium",
+    "price": "average priced",
     "description": "Decent small trebles bar, can get busy at peak times (9pm-11pm). Pricey on weekends, but £6.95 for 3 trebles during the week with a student card",
     "openFrom": "2100",
     "closeAt": "0200",
@@ -51,7 +51,7 @@
     "name": "Bijoux",
     "location": "36-38 Mosley St, Newcastle upon Tyne",
     "postcode": "NE1 1DF",
-    "price": "medium",
+    "price": "average priced",
     "description": "Very small trebles bar, frequented by Geordie Shore. Very expensive on weekends, but decent student offers Monday to Friday",
     "openFrom": "2100",
     "closeAt": "0000",
@@ -87,11 +87,22 @@
     "name": "Players",
     "location": "The Gate, Newgate St",
     "postcode": "NE1 5TG",
-    "price": "medium",
+    "price": "average priced",
     "description": "Large trebles bar based in The Gate, cheap during the week, expensive on the weekend",
     "openFrom": "1900",
     "closeAt": "0100",
     "locationLatLong": {"latitude": 54.97247, "longitude": -1.6184438},
     "imageUrl": "http://i.imgur.com/SltRQbz.jpg"
+  },
+  
+  {
+    "name": "Beyond Bar",
+    "location": "The Gate, Newgate St",
+    "postcode": "NE1 5TG",
+    "price": "cheap",
+    "openFrom": "1000",
+    "closeAt": "0200",
+    "locationLatLong": {"latitude": 54.97247, "longitude": -1.6184438},
+    "imageUrl": "http://i.imgur.com/oXh3GQa.jpg"
   }
 ]
