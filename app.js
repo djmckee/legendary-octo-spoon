@@ -244,7 +244,7 @@ function buildResponse(barObject){
                 "buttons": [{
                     "type": "web_url",
                     "title": "Go here!",
-                    "url": "http://google.co.uk"
+                    "url": buildGoogleMapsUrl(barObject)
                 }]
             }]
         }
