@@ -65,7 +65,13 @@ function getOpenBars(){
   var hour = date.getHours();
   var minutes = date.getMinutes();
 
-  var currentTime = hour + "" + minutes;
+  if(minutes < 10){
+    //for padding (e.g. so 4:02 = 402, not 42)
+    var currentTime = hour + "0" + minutes;
+  }
+  else{
+    var currentTime = hour + "" + minutes;
+  }
   currentTime = parseInt(currentTime);
 
   var openBars = [];
