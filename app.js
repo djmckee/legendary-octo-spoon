@@ -2,6 +2,7 @@ const http = require('http');
 const Bot = require('messenger-bot');
 const constants = require("./constants");
 const fs = require("fs");
+const request = require('request');
 
 //import the JSON file, and it give an array of bars
 var bars = JSON.parse(fs.readFileSync("data.json"));
@@ -36,6 +37,7 @@ bot.on('message', (payload, reply) => {
     let helpCommand = "help";
     let allCommand = "all";
     let everyCommand = "everything";
+    let witaiCommand = "witaiTest";
 
     var isTextMessage = (messageText != null);
 
@@ -52,6 +54,10 @@ bot.on('message', (payload, reply) => {
         // Return every bar, even closed ones
         replyString = '🍻';
         sendAllBars(payload.sender.id);
+    } else if (isTextMessage && messageText.toLowerCase().indexOf(witaiHandler) > -1){
+        //test the witai command;
+        witaiHandler("Get me to the nearest bar!");
+    }
 
     } else if (hour > 3 && hour < 7) {
         replyString = 'Go home ' + profile.first_name + ' - you\'re drunk!';
@@ -187,3 +193,19 @@ function isOpen(startTime, endTime, currentTime){
 
 http.createServer(bot.middleware()).listen(3000);
 console.log('Echo bot server running at port 3000.');
+
+function witaiHandler(text){
+    var options = {
+        url: 'https://api.wit.ai/message',
+        data:   {
+                    'q': text,
+                    'access_token' : '3MIWQZ4LBYQX3RGXUXJQVKRTWANNCSD5'
+                }
+        };
+        
+    request.request(options, function(error, response, body) {
+        if (!error && response.statusCode == 200){
+            console.log(body);   
+        }
+    });
+}
