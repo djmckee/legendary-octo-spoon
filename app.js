@@ -66,25 +66,27 @@ bot.on('message', (payload, reply) => {
         var bar = getRandomFromArray(openBars);
 
         // Is it a location?
-        if (payload["message"]["attachments"][0]["type"] == "location") {
-            let location = payload["message"]["attachments"][0];
+        if (payload["message"]["attachments"] != null) {
+            if (payload["message"]["attachments"][0]["type"] == "location") {
+                let location = payload["message"]["attachments"][0];
 
-            let latitude = location["payload"]["coordinates"]["lat"];
-            let longitude = location["payload"]["coordinates"]["long"];
-            console.log('got location - latitude: ' + String(latitude) + ' longitude:' + String(longitude));
+                let latitude = location["payload"]["coordinates"]["lat"];
+                let longitude = location["payload"]["coordinates"]["long"];
+                console.log('got location - latitude: ' + String(latitude) + ' longitude:' + String(longitude));
 
-            bar = nearestBarToLocation(latitude, longitude);
+                bar = nearestBarToLocation(latitude, longitude);
 
-            if (bar == null) {
-                console.log('couldn\'t find found nearest bar');
+                if (bar == null) {
+                    console.log('couldn\'t find found nearest bar');
 
-                bar = getRandomFromArray();
-            } else {
-                console.log('found nearest bar');
+                    bar = getRandomFromArray();
+                } else {
+                    console.log('found nearest bar');
+                }
+
+                replyString = 'Hey ' + profile.first_name + '! Your nearest trebles bar is ' + bar.name + ', at ' + bar.location;
+
             }
-
-            replyString = 'Hey ' + profile.first_name + '! Your nearest trebles bar is ' + bar.name + ', at ' + bar.location;
-
         } else {
             replyString = 'Hey ' + profile.first_name + '! I recommend ' + bar.name + '. It\'s pretty ' + bar.price + '. You can find it at ' + bar.location + '.';
 
