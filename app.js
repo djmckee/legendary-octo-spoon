@@ -41,24 +41,34 @@ bot.on('message', (payload, reply) => {
 
     var isTextMessage = (messageText != null);
 
+    var attachmentData = {text: replyString};
+
     if (isTextMessage && messageText.toLowerCase().indexOf(helpCommand) > -1) {
         // Help...
         replyString = 'This is the trebles bot; commands are:\n\'help\' - displays this menu\n\'all\' - all open bars\n\'everything\' - every bar (even closed ones!)';
+        attachmentData['text'] = replyString;
 
     } else if (isTextMessage && messageText.toLowerCase().indexOf(allCommand) > -1) {
         // Return all open bars
         replyString = '🍻';
+        attachmentData['text'] = replyString;
+
         sendOpenBars(payload.sender.id);
 
     } else if (isTextMessage && messageText.toLowerCase().indexOf(everyCommand) > -1){
         // Return every bar, even closed ones
         replyString = '🍻';
+        attachmentData['text'] = replyString;
+
         sendAllBars(payload.sender.id);
     } else if (hour > 3 && hour < 7) {
         replyString = 'Go home ' + profile.first_name + ' - you\'re drunk!';
+        attachmentData['text'] = replyString;
+
     } else if (openBars.length == 0) {
         // :'(
         replyString = 'Hey ' + profile.first_name + '! Sorry, nothing\'s open right now - come back later for some tasty trebs...';
+        attachmentData['text'] = replyString;
 
     } else {
         console.log('openbars = ' + openBars);
@@ -84,18 +94,20 @@ bot.on('message', (payload, reply) => {
                 }
 
                 replyString = 'Hey ' + profile.first_name + '! Your nearest open bar is ' + bar.name + ', at ' + bar.location;
+                attachmentData = {attachment: buildResponse(bar)};
 
             }
         } else {
             replyString = 'Hey ' + profile.first_name + '! I recommend ' + bar.name + '. It\'s pretty ' + bar.price + '. You can find it at ' + bar.location + '.';
-
+            attachmentData = {attachment: buildResponse(bar)};
         }
 
     }
 
     console.log('gonna send back: ' + replyString);
 
-    reply({ attachment: buildResponse(bar)}, (err) => {
+
+    reply(attachmentData, (err) => {
       if (err) {
           console.log("error:" + JSON.stringify(err));
       }
@@ -223,7 +235,7 @@ function isOpen(startTime, endTime, currentTime){
 function buildResponse(barObject){
     var object = {
         "type": "template",
-        "payload": {    
+        "payload": {
             "template_type": "generic",
             "elements": [{
                 "title": barObject.name,
