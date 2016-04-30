@@ -41,7 +41,7 @@ bot.on('message', (payload, reply) => {
 
     var isTextMessage = (messageText != null);
 
-    var attachmentData = null;
+    var attachmentData = {text: replyString};
 
     if (isTextMessage && messageText.toLowerCase().indexOf(helpCommand) > -1) {
         // Help...
@@ -86,19 +86,20 @@ bot.on('message', (payload, reply) => {
                 }
 
                 replyString = 'Hey ' + profile.first_name + '! Your nearest open bar is ' + bar.name + ', at ' + bar.location;
-                attachmentData = buildResponse(bar);
+                attachmentData = {attachment: buildResponse(bar)};
 
             }
         } else {
             replyString = 'Hey ' + profile.first_name + '! I recommend ' + bar.name + '. It\'s pretty ' + bar.price + '. You can find it at ' + bar.location + '.';
-            attachmentData = buildResponse(bar);
+            attachmentData = {attachment: buildResponse(bar)};
         }
 
     }
 
     console.log('gonna send back: ' + replyString);
 
-    reply({ text: replyString, attachment: attachmentData}), (err) => {
+
+    reply(attachmentData, (err) => {
       if (err) {
           console.log("error:" + JSON.stringify(err));
       }
@@ -225,15 +226,18 @@ function isOpen(startTime, endTime, currentTime){
 
 function buildResponse(barObject){
     var object = {
-        "template_type": "generic",
-        "elements": {
-            "title": barObject.name,
-            "item_url": "http://google.co.uk",
-            "image_url": "http://i.imgur.com/01AIyAd.jpg",
-            "buttons": [{
-                "type": "web_url",
-                "title": "Go here!",
-                "url": "http://google.co.uk"
+        "type": "template",
+        "payload": {
+            "template_type": "generic",
+            "elements": [{
+                "title": barObject.name,
+                "item_url": "http://google.co.uk",
+                "image_url": "http://i.imgur.com/01AIyAd.jpg",
+                "buttons": [{
+                    "type": "web_url",
+                    "title": "Go here!",
+                    "url": "http://google.co.uk"
+                }]
             }]
         }
     };
