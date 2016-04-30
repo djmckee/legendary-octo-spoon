@@ -3,46 +3,10 @@ const Bot = require('messenger-bot');
 const constants = require("./constants");
 const fs = require("fs");
 const geolib = require("geolib");
-const deepcopy = require("deepcopy");
-
-var geocoderProvider = 'google';
-var httpAdapter = 'https';
-// optional
-var extra = {
-    apiKey: constants.GOOGLE_API_KEY, // for Mapquest, OpenCage, Google Premier
-    formatter: null         // 'gpx', 'string', ...
-};
-
-var geocoder = require('node-geocoder')(geocoderProvider, httpAdapter, extra);
 
 //import the JSON file, and it give an array of bars
 var bars = JSON.parse(fs.readFileSync("data.json"));
 
-
-
-function geocodeBars() {
-    for (var i = 0; i < bars.length; i++) {
-        var bar = bars[i];
-        var addressString = bar.location + ', ' + bar.postcode;
-
-
-        geocoder.geocode(addressString, function(err, res) {
-            var j = deepcopy(i);
-            var barCopy = deepcopy(bar);
-            console.log(res);
-            var loc = res[0];
-            var coordinates = {latitude: loc.latitude, longitude: loc.longitude};
-            barCopy.location = loc;
-            console.log('geocoded ' + barCopy.name);
-            bars[i] = barCopy;
-        });
-
-
-
-    }
-}
-
-geocodeBars();
 
 let bot = new Bot({
   token: constants.PAGE_TOKEN,
