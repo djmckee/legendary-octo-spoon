@@ -115,7 +115,7 @@ function nearestBarToLocation(lat, long) {
         var distance = geolib.getDistance(location, barLoc);
 
         if (distance < shortestDistance) {
-            bar = barN;
+            bar = theBar;
         }
 
     }
