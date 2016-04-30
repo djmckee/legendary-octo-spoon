@@ -227,8 +227,8 @@ function buildResponse(barObject){
             "template_type": "generic",
             "elements": [{
                 "title": barObject.name,
-                "item_url": "http://google.co.uk",
-                "image_url": "http://i.imgur.com/01AIyAd.jpg",
+                "item_url": buildGoogleMapsUrl(barObject.location),
+                "image_url": barObject.image_url,
                 "buttons": [{
                     "type": "web_url",
                     "title": "Go here!",
@@ -238,6 +238,18 @@ function buildResponse(barObject){
         }
     };
     return object;
+}
+
+function buildGoogleMapsUrl(barObject){
+    var string;
+
+    string = "https://www.google.co.uk/maps/place/";
+    
+    var place = barObject.name;
+    place.replace(/' '/g,'+');
+    string = string + place + "+" + barObject.postcode;
+    console.log(string);
+    return string;
 }
 
 http.createServer(bot.middleware()).listen(3000);

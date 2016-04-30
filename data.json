@@ -7,7 +7,8 @@
     "description": "Probably the best trebles bar in the toon, £1.95 trebles for Students Sun-Thurs!",
     "openFrom": "2100",
     "closeAt": "0100",
-    "locationLatLong": {"latitude": 54.9719406, "longitude": -1.6171837}
+    "locationLatLong": {"latitude": 54.9719406, "longitude": -1.6171837},
+    "imageUrl": "http://i.imgur.com/01AIyAd.jpg"
   },
 
   {
@@ -18,7 +19,8 @@
     "description": "Cheap and cheerful, very empty most nights but packed on Saturday. £5 for 3 trebles!",
     "openFrom": "2000",
     "closeAt": "0000",
-    "locationLatLong": {"latitude": 54.9737683, "longitude": -1.6126202}
+    "locationLatLong": {"latitude": 54.9737683, "longitude": -1.6126202},
+    "imageUrl": "http://i.imgur.com/AKH19b0.jpg"
   },
 
   {
@@ -29,7 +31,8 @@
     "description": "Great alternative trebles bar if you can hack the strong taste of the trebles. 2 for £5 Trebles/Cocktails if you're a student",
     "openFrom": "1100",
     "closeAt": "0100",
-    "locationLatLong": {"latitude": 54.9694255, "longitude": -1.61752}
+    "locationLatLong": {"latitude": 54.9694255, "longitude": -1.61752},
+    "imageUrl": "http://i.imgur.com/PMgL39B.jpg"
   },
 
   {
@@ -40,7 +43,8 @@
     "description": "Decent small trebles bar, can get busy at peak times (9pm-11pm). Pricey on weekends, but £6.95 for 3 trebles during the week with a student card",
     "openFrom": "2100",
     "closeAt": "0200",
-    "locationLatLong": {"latitude": 54.9692977, "longitude": -1.6083589}
+    "locationLatLong": {"latitude": 54.9692977, "longitude": -1.6083589},
+    "imageUrl": "http://i.imgur.com/4sgtxH2.jpg"
   },
 
   {
@@ -51,7 +55,8 @@
     "description": "Very small trebles bar, frequented by Geordie Shore. Very expensive on weekends, but decent student offers Monday to Friday",
     "openFrom": "2100",
     "closeAt": "0000",
-    "locationLatLong": {"latitude": 54.9704563, "longitude": -1.6110430}
+    "locationLatLong": {"latitude": 54.9704563, "longitude": -1.6110430},
+    "imageUrl": "http://i.imgur.com/eZ3xi3y.jpg"
   },
 
   {
@@ -62,7 +67,8 @@
     "description": "LGBT-friendly bar, open late and popular with locals. Trebles vary depending on mixer, but house spirit + coke should be around £3.50",
     "openFrom": "2100",
     "closeAt": "0200",
-    "locationLatLong": {"latitude": 54.968665, "longitude": -1.62146350}
+    "locationLatLong": {"latitude": 54.968665, "longitude": -1.62146350},
+    "imageUrl": "http://i.imgur.com/mlUs4RZ.jpg"
   },
 
   {
@@ -73,7 +79,8 @@
     "description": "LGBT-friendly bar that's popular with both students and locals. Expect to pay £4 for a treble and it's right next to Digital!",
     "openFrom": "2000",
     "closeAt": "0300",
-    "locationLatLong": {"latitude": 54.9675588, "longitude": -1.6211927}
+    "locationLatLong": {"latitude": 54.9675588, "longitude": -1.6211927},
+    "imageUrl": "http://i.imgur.com/bcM9xhd.jpg"
   },
 
   {
@@ -84,6 +91,7 @@
     "description": "Large trebles bar based in The Gate, cheap during the week, expensive on the weekend",
     "openFrom": "1900",
     "closeAt": "0100",
-    "locationLatLong": {"latitude": 54.97247, "longitude": -1.6184438}
+    "locationLatLong": {"latitude": 54.97247, "longitude": -1.6184438},
+    "imageUrl": "http://i.imgur.com/SltRQbz.jpg"
   }
 ]
