@@ -6,7 +6,8 @@
     "price": "cheap",
     "description": "Probably the best trebles bar in the toon, £1.95 trebles for Students Sun-Thurs!",
     "openFrom": "2100",
-    "closeAt": "0100"
+    "closeAt": "0100",
+    "locationLatLong": {"latitude": 54.9719406, "longitude": -1.6171837}
   },
 
   {
@@ -16,7 +17,8 @@
     "price": "cheap",
     "description": "Cheap and cheerful, very empty most nights but packed on Saturday. £5 for 3 trebles!",
     "openFrom": "2000",
-    "closeAt": "0000"
+    "closeAt": "0000",
+    "locationLatLong": {"latitude": 54.9737683, "longitude": -1.6126202}
   },
 
   {
@@ -26,7 +28,8 @@
     "price": "cheap",
     "description": "Great alternative trebles bar if you can hack the strong taste of the trebles. 2 for £5 Trebles/Cocktails if you're a student",
     "openFrom": "1100",
-    "closeAt": "0100"
+    "closeAt": "0100",
+    "locationLatLong": {"latitude": 54.9694255, "longitude": -1.61752}
   },
 
   {
@@ -36,7 +39,8 @@
     "price": "medium",
     "description": "Decent small trebles bar, can get busy at peak times (9pm-11pm). Pricey on weekends, but £6.95 for 3 trebles during the week with a student card",
     "openFrom": "2100",
-    "closeAt": "0200"
+    "closeAt": "0200",
+    "locationLatLong": {"latitude": 54.9692977, "longitude": -1.6083589}
   },
 
   {
