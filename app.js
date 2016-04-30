@@ -54,7 +54,7 @@ bot.on('message', (payload, reply) => {
         // Return every bar, even closed ones
         replyString = '🍻';
         sendAllBars(payload.sender.id);
-    } else if (isTextMessage && messageText.toLowerCase().indexOf(witaiHandler) > -1){
+    } else if (isTextMessage && messageText.toLowerCase().indexOf(witaiCommand) > -1){
         //test the witai command;
         witaiHandler("Get me to the nearest bar!");
     } else if (hour > 3 && hour < 7) {
