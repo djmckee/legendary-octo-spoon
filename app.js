@@ -28,7 +28,13 @@ bot.on('message', (payload, reply) => {
     var openBars = getOpenBars();
 
     var replyString = "";
-    if (openBars.length == 0) {
+
+    var date = new Date();
+    var hour = date.getHours();
+
+    if (hour > 3 && hour < 7) {
+        replyString = 'Go home ' + profile.first_name + ' - you\'re drunk!';
+    } else if (openBars.length == 0) {
         // :'(
         replyString = 'Hey ' + profile.first_name + '! Sorry, nothing\'s open right now - come back later for some tasty trebs...';
 
