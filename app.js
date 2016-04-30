@@ -106,21 +106,24 @@ bot.on('message', (payload, reply) => {
 
 
 function nearestBarToLocation(lat, long) {
-    var bar = null;
+    var nearestBar = null;
     var location = {latitude: lat, longitude: long};
     var shortestDistance = 100000000000;
-    for (var i = 0; i < bars.length; i++) {
-        var theBar = bars[i];
-        var barLoc = theBar.locationLatLong;
+
+    var openBars = getOpenBars();
+
+    for (var i = 0; i < openBars.length; i++) {
+        var bar = openBars[i];
+        var barLoc = bar.locationLatLong;
         var distance = geolib.getDistance(location, barLoc);
 
         if (distance < shortestDistance) {
-            bar = theBar;
+            nearestBar = bar;
         }
 
     }
 
-    return bar;
+    return nearestBar;
 }
 
 // Sends all open bars as a formatted string in inidiviual messages
