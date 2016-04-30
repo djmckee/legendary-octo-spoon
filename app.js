@@ -195,6 +195,7 @@ http.createServer(bot.middleware()).listen(3000);
 console.log('Echo bot server running at port 3000.');
 
 function witaiHandler(text){
+    console.log("witaiHandler started");
     var options = {
         url: 'https://api.wit.ai/message',
         data:   {
@@ -205,7 +206,7 @@ function witaiHandler(text){
         
     request.request(options, function(error, response, body) {
         if (!error && response.statusCode == 200){
-            console.log(body);   
+            console.log("witaiTest: " + body);   
         }
     });
 }
