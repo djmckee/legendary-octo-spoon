@@ -54,7 +54,6 @@ bot.on('message', (payload, reply) => {
         // Return every bar, even closed ones
         replyString = '🍻';
         sendAllBars(payload.sender.id);
-
     } else if (hour > 3 && hour < 7) {
         replyString = 'Go home ' + profile.first_name + ' - you\'re drunk!';
     } else if (openBars.length == 0) {
@@ -94,7 +93,7 @@ bot.on('message', (payload, reply) => {
 
     console.log('gonna send back: ' + replyString);
 
-    reply({ text: replyString }, (err) => {
+    reply({ text: replyString,  buildResponse(bar)}, (err) => {
       if (err) {
           console.log("error:" + JSON.stringify(err));
       }
@@ -212,6 +211,23 @@ function isOpen(startTime, endTime, currentTime){
   else{
     return false;
   }
+}
+
+function buildResponse(barObject){
+    var object = {
+        "template_type": "generic",
+        "elements": {
+            "title": barObject.name,
+            "item_url": "http://google.co.uk",
+            "image_url": "http://i.imgur.com/01AIyAd.jpg",
+            "buttons": [{
+                "type": "web_url",
+                "title": "Go here!",
+                "url": "http://google.co.uk"
+            }]
+        }
+    };
+    return object;
 }
 
 http.createServer(bot.middleware()).listen(3000);
