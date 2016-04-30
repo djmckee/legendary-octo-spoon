@@ -51,7 +51,7 @@
     "description": "Very small trebles bar, frequented by Geordie Shore. Very expensive on weekends, but decent student offers Monday to Friday",
     "openFrom": "2100",
     "closeAt": "0000",
-    "locatingLatLong": {"latitude": 54.9704563, "longitude": -1.6110430}
+    "locationLatLong": {"latitude": 54.9704563, "longitude": -1.6110430}
   },
 
   {

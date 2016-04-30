@@ -8,6 +8,15 @@ const geolib = require("geolib");
 var bars = JSON.parse(fs.readFileSync("data.json"));
 
 
+function checkgeo() {
+    for (var i = 0; i < bars.length; i++) {
+        var bar = bars[i];
+        console.log('bar location: ' + JSON.stringify(bar.locationLatLong));
+    }
+
+}
+checkgeo();
+
 let bot = new Bot({
   token: constants.PAGE_TOKEN,
   verify: constants.APP_VERIFY,
