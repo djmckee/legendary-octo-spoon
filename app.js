@@ -95,7 +95,7 @@ bot.on('message', (payload, reply) => {
 
     console.log('gonna send back: ' + replyString);
 
-    reply({ text: replyString, attachment: buildResponse(bar)}), (err) => {
+    reply({ text: replyString, attachment: buildResponse(bar)}, (err) => {
       if (err) {
           console.log("error:" + JSON.stringify(err));
       }
