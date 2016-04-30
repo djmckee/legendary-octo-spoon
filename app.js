@@ -8,15 +8,6 @@ const geolib = require("geolib");
 var bars = JSON.parse(fs.readFileSync("data.json"));
 
 
-function checkgeo() {
-    for (var i = 0; i < bars.length; i++) {
-        var bar = bars[i];
-        console.log('bar location: ' + JSON.stringify(bar.locationLatLong));
-    }
-
-}
-checkgeo();
-
 let bot = new Bot({
   token: constants.PAGE_TOKEN,
   verify: constants.APP_VERIFY,
@@ -93,7 +84,7 @@ bot.on('message', (payload, reply) => {
                     console.log('found nearest bar');
                 }
 
-                replyString = 'Hey ' + profile.first_name + '! Your nearest trebles bar is ' + bar.name + ', at ' + bar.location;
+                replyString = 'Hey ' + profile.first_name + '! Your nearest open bar is ' + bar.name + ', at ' + bar.location;
 
             }
         } else {
@@ -121,7 +112,7 @@ function nearestBarToLocation(lat, long) {
     var location = {latitude: lat, longitude: long};
     var shortestDistance = 1000000000;
 
-    var openBars = bars;
+    var openBars = getOpenBars();
 
     for (var i = 0; i < openBars.length; i++) {
         var bar = openBars[i];
