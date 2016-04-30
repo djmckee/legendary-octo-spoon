@@ -45,7 +45,7 @@ bot.on('message', (payload, reply) => {
           console.log("error:" + JSON.stringify(err));
       }
 
-      console.log(`Echoed back to ${profile.first_name} ${profile.last_name}: ${text}`);
+      console.log(`Echoed back to ${profile.first_name} ${profile.last_name}: ${replyString}`);
   });
   });
 });
