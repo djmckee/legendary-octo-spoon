@@ -1,7 +1,7 @@
 [
   {
     "name": "Sinners",
-    "location": "63 Newgate St, City Centre, Newcastle upon Tyne",
+    "location": "63 Newgate St",
     "postcode": "NE1 5RF",
     "price": "cheap",
     "description": "Probably the best trebles bar in the toon, £1.95 trebles for Students Sun-Thurs!",
@@ -11,7 +11,7 @@
 
   {
     "name": "Basement",
-    "location": "118 Grey St, City Centre, Newcastle upon Tyne", 
+    "location": "118 Grey St",
     "postcode": "NE1 6JG",
     "price": "cheap",
     "description": "Cheap and cheerful, very empty most nights but packed on Saturday. £5 for 3 trebles!",
@@ -21,7 +21,7 @@
 
   {
     "name": "Gotham Town",
-    "location": "Gunner House, Neville St, Newcastle upon Tyne",
+    "location": "Gunner House, Neville St",
     "postcode": "NE1 5DF",
     "price": "cheap",
     "description": "Great alternative trebles bar if you can hack the strong taste of the trebles. 2 for £5 Trebles/Cocktails if you're a student",
@@ -48,30 +48,30 @@
     "openFrom": "2100",
     "closeAt": "0000"
   },
-  
+
   {
     "name": "Easy Street",
-    "location": "8-10 Westmorland Rd, City Centre, Newcastle upon Tyne",
+    "location": "8-10 Westmorland Rd",
     "postcode": "NE1 4EG",
     "price": "expensive",
     "description": "LGBT-friendly bar, open late and popular with locals. Trebles vary depending on mixer, but house spirit + coke should be around £3.50",
     "openFrom": "2100",
     "closeAt": "0200"
   },
-  
+
   {
     "name": "Rustys",
-    "location": "Unit 3&4 International Centre for Life, Times Square,, Newcastle upon Tyne",
+    "location": "Unit 3&4 International Centre for Life, Times Square",
     "postcode": "NE1 4EP",
     "price": "expensive",
     "description": "LGBT-friendly bar that's popular with both students and locals. Expect to pay £4 for a treble and it's right next to Digital!",
     "openFrom": "2000",
     "closeAt": "0300"
   },
-  
+
   {
     "name": "Players",
-    "location": "The Gate, Newgate St Newcastle upon Tyne",
+    "location": "The Gate, Newgate St",
     "postcode": "NE1 5TG",
     "price": "medium",
     "description": "Large trebles bar based in The Gate, cheap during the week, expensive on the weekend",
