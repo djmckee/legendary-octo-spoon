@@ -110,7 +110,7 @@ bot.on('message', (payload, reply) => {
 function nearestBarToLocation(lat, long) {
     var nearestBar = null;
     var location = {latitude: lat, longitude: long};
-    var shortestDistance = 100000000000;
+    var shortestDistance = 1000000000;
 
     var openBars = getOpenBars();
 
@@ -121,6 +121,7 @@ function nearestBarToLocation(lat, long) {
 
         if (distance < shortestDistance) {
             nearestBar = bar;
+            shortestDistance = distance;
         }
 
     }
