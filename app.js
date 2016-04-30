@@ -111,7 +111,7 @@ function nearestBarToLocation(lat, long) {
     var shortestDistance = 100000000000;
     for (var i = 0; i < bars.length; i++) {
         var barN = bars[i];
-        var distance = geolib.getDistance(location, barN.location);
+        var distance = geolib.getDistance(location, barN.locationLatLong);
 
         if (distance < shortestDistance) {
             bar = barN;
