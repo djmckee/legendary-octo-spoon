@@ -46,21 +46,29 @@ bot.on('message', (payload, reply) => {
     if (isTextMessage && messageText.toLowerCase().indexOf(helpCommand) > -1) {
         // Help...
         replyString = 'This is the trebles bot; commands are:\n\'help\' - displays this menu\n\'all\' - all open bars\n\'everything\' - every bar (even closed ones!)';
+        attachmentData['text'] = replyString;
 
     } else if (isTextMessage && messageText.toLowerCase().indexOf(allCommand) > -1) {
         // Return all open bars
         replyString = '🍻';
+        attachmentData['text'] = replyString;
+
         sendOpenBars(payload.sender.id);
 
     } else if (isTextMessage && messageText.toLowerCase().indexOf(everyCommand) > -1){
         // Return every bar, even closed ones
         replyString = '🍻';
+        attachmentData['text'] = replyString;
+
         sendAllBars(payload.sender.id);
     } else if (hour > 3 && hour < 7) {
         replyString = 'Go home ' + profile.first_name + ' - you\'re drunk!';
+        attachmentData['text'] = replyString;
+
     } else if (openBars.length == 0) {
         // :'(
         replyString = 'Hey ' + profile.first_name + '! Sorry, nothing\'s open right now - come back later for some tasty trebs...';
+        attachmentData['text'] = replyString;
 
     } else {
         console.log('openbars = ' + openBars);
