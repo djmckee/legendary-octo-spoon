@@ -41,6 +41,8 @@ bot.on('message', (payload, reply) => {
 
     var isTextMessage = (messageText != null);
 
+    var attachmentData = null;
+
     if (isTextMessage && messageText.toLowerCase().indexOf(helpCommand) > -1) {
         // Help...
         replyString = 'This is the trebles bot; commands are:\n\'help\' - displays this menu\n\'all\' - all open bars\n\'everything\' - every bar (even closed ones!)';
@@ -84,18 +86,19 @@ bot.on('message', (payload, reply) => {
                 }
 
                 replyString = 'Hey ' + profile.first_name + '! Your nearest open bar is ' + bar.name + ', at ' + bar.location;
+                attachmentData = buildResponse(bar);
 
             }
         } else {
             replyString = 'Hey ' + profile.first_name + '! I recommend ' + bar.name + '. It\'s pretty ' + bar.price + '. You can find it at ' + bar.location + '.';
-
+            attachmentData = buildResponse(bar);
         }
 
     }
 
     console.log('gonna send back: ' + replyString);
 
-    reply({ text: replyString, attachment: buildResponse(bar)}), (err) => {
+    reply({ text: replyString, attachment: attachmentData}), (err) => {
       if (err) {
           console.log("error:" + JSON.stringify(err));
       }
