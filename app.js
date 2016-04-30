@@ -51,8 +51,8 @@ app.listen(3000, function () {
 
 //this function just returns a random bar object
 function getRandomBar(){
-  var randomIndex = Math.random(data.length);
-  return data[randomIndex]; 
+  var randomIndex = Math.random(bars.length);
+  return bars[randomIndex]; 
 }
 
 http.createServer(bot.middleware()).listen(3000);
