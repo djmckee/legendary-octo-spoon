@@ -53,7 +53,8 @@ function getOpenBars(){
   var hour = date.getHours();
   var minutes = date.getMinutes();
   var currentTime = hour + "" + minutes;
-  var openBars;
+  currentTime = parseInt(currentTime);
+  var openBars = [];
   
   //itterate through the bars array
   for(var i=0; i < bars.length; i++){
@@ -62,15 +63,15 @@ function getOpenBars(){
        openBars.push(bars[i]);
     }
   }
-  
+
   return openBars;
 }
 
 function isOpen(startTime, endTime, currentTime){
   //to handle the midnight to 4am slot (best time for drinking trebles responsibly...)
-  if(currentTime > 0 && currentTime < 4){
-    currentTime = currentTime + 24;
-    endTime = endTime + 24;
+  if(currentTime > 0 && currentTime < 400){
+    currentTime = currentTime + 2400;
+    endTime = endTime + 2400;
   }
   
   if(currentTime > startTime && currentTime < endTime){
