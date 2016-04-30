@@ -23,9 +23,9 @@ bot.on('message', (payload, reply) => {
     if (err) throw err
 
     var bar = getRandomBar();
-    var reply = 'Hey! I recommend ' + bar.name + '. It\'s pretty ' + bar.price + '. You can find it at ' + bar.location + '.';
+    var replyString = 'Hey! I recommend ' + bar.name + '. It\'s pretty ' + bar.price + '. You can find it at ' + bar.location + '.';
 
-    reply({ reply }, (err) => {
+    reply({ replyString }, (err) => {
       if (err) throw err
 
       console.log(`Echoed back to ${profile.first_name} ${profile.last_name}: ${reply}`);
