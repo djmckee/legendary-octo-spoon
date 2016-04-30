@@ -15,7 +15,7 @@
     "name": "Basement",
     "location": "118 Grey St",
     "postcode": "NE1 6JG",
-    "price": "very cheap",
+    "price": "cheap",
     "description": "Cheap and cheerful, very empty most nights but packed on Saturday. £5 for 3 trebles!",
     "openFrom": "2000",
     "closeAt": "0000",
@@ -94,7 +94,7 @@
     "locationLatLong": {"latitude": 54.97247, "longitude": -1.6184438},
     "imageUrl": "http://i.imgur.com/SltRQbz.jpg"
   },
-  
+
   {
     "name": "Beyond Bar",
     "location": "The Gate, Newgate St",
