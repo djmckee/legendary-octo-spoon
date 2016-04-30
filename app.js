@@ -20,11 +20,12 @@ app.set('view engine', 'jade');
 
 const http = require('http');
 const Bot = require('messenger-bot');
+const constants = require("./constants");
 
 let bot = new Bot({
-  token: 'PAGE_TOKEN',
-  verify: 'VERIFY_TOKEN',
-  app_secret: 'APP_SECRET'
+  token: constants.PAGE_TOKEN,
+  verify: constants.APP_VERIFY,
+  app_secret: constants.APP_SECRET
 });
 
 bot.on('error', (err) => {
