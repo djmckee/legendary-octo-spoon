@@ -23,7 +23,7 @@ bot.on('message', (payload, reply) => {
     if (err) throw err
 
     var bar = getRandomBar();
-    var replyString = 'Hey! I recommend ' + bar.name + '. It\'s pretty ' + bar.price + '. You can find it at ' + bar.location + '.';
+    var replyString = 'Hey! .';
 
     reply({ replyString }, (err) => {
       if (err) throw err
