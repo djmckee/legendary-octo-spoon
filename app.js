@@ -112,7 +112,7 @@ function nearestBarToLocation(lat, long) {
     var location = {latitude: lat, longitude: long};
     var shortestDistance = 1000000000;
 
-    var openBars = getOpenBars();
+    var openBars = bars;
 
     for (var i = 0; i < openBars.length; i++) {
         var bar = openBars[i];
