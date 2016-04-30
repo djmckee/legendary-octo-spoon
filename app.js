@@ -257,11 +257,12 @@ function buildGoogleMapsUrl(barObject){
 
     string = "https://www.google.co.uk/maps/place/";
     
-    var place = barObject.location + barObject.postcode;
+    var place = barObject.location + ", " + barObject.postcode;
     console.log(place);
-    place.str.split(' ').join('+');
+    place = place.str.split(' ').join('+');
     string = string + place;
     console.log(string);
+    
     return string;
 }
 
