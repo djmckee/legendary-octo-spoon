@@ -225,7 +225,7 @@ function buildResponse(barObject){
         "type": "template",
         "payload": {    
             "template_type": "generic",
-            "elements": [
+            "elements": [{
                 "title": barObject.name,
                 "item_url": "http://google.co.uk",
                 "image_url": "http://i.imgur.com/01AIyAd.jpg",
@@ -234,7 +234,7 @@ function buildResponse(barObject){
                     "title": "Go here!",
                     "url": "http://google.co.uk"
                 }]
-            ]
+            }]
         }
     };
     return object;
