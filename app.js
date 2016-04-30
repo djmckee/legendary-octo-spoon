@@ -1,6 +1,10 @@
 const http = require('http');
 const Bot = require('messenger-bot');
 const constants = require("./constants");
+const fs = require("fs");
+
+//import the JSON file, and it give an array of bars
+var bars = JSON.parse(fs.readFileSync("data.json"));
 
 let bot = new Bot({
   token: constants.PAGE_TOKEN,
@@ -32,7 +36,7 @@ bot.on('message', (payload, reply) => {
 //this function just returns a random bar object
 function getRandomBar(){
   var randomIndex = Math.random(bars.length);
-  return bars[randomIndex]; 
+  return bars[randomIndex];
 }
 
 http.createServer(bot.middleware()).listen(3000);
