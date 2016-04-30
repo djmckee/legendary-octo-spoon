@@ -41,11 +41,13 @@ bot.on('message', (payload, reply) => {
 
     } else if (messageText.toLowerCase().indexOf(allCommand) > -1) {
         // Return all open bars
-        replyString = formattedOpenBars();
+        replyString = 'Hey ' + profile.first_name + '! These bars are currently open...';
+        sendOpenBars(payload.sender.id);
 
     } else if (messageText.toLowerCase().indexOf(everyCommand) > -1){
         // Return every bar, even closed ones
-        replyString = formattedAllBars();
+        replyString = 'Hey ' + profile.first_name + '! These are all the bars (open & closed)...';
+        sendAllBars(payload.sender.id);
 
     } else if (hour > 3 && hour < 7) {
         replyString = 'Go home ' + profile.first_name + ' - you\'re drunk!';
@@ -72,31 +74,35 @@ bot.on('message', (payload, reply) => {
   });
 });
 
-// Returns all open bars as a formatted string
-function formattedOpenBars() {
-    var string = 'These bars are open...\n';
-
+// Sends all open bars as a formatted string in inidiviual messages
+function sendOpenBars(userId) {
     var openBars = getOpenBars();
 
     for (var i = 0; i < openBars.length; i++) {
         var bar = openBars[i];
-        string += '\n' + bar.name + ' (' + bar.price + ') - ' + bar.location;
-    }
+        var string = '' + bar.name + ' (' + bar.price + ') - ' + bar.location;
 
-    return string;
+        bot.sendMessage(userId, { text: string }, function(err, info){
+            if (err) {
+                console.log("message send error:" + JSON.stringify(err));
+            }
+        });
+    }
 
 }
 
-// Returns all bars as a formatted string
-function formattedAllBars() {
-    var string = 'Here\'s all the bars...\n';
-
+// Sends all bars as a formatted string in inidiviual messages
+function sendAllBars(userId) {
     for (var i = 0; i < bars.length; i++) {
         var bar = bars[i];
-        string += '\n' + bar.name + ' (' + bar.price + ') - ' + bar.location;
-    }
+        var string = '' + bar.name + ' (' + bar.price + ') - ' + bar.location;
+        bot.sendMessage(userId, { text: string }, function(err, info){
+            if (err) {
+                console.log("message send error:" + JSON.stringify(err));
+            }
+        });
 
-    return string;
+    }
 
 }
 
