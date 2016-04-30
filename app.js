@@ -72,7 +72,7 @@ bot.on('message', (payload, reply) => {
 
             console.log('got location - latitude: ' + String(latitude) + ' longitude:' + String(longitude));
 
-            replyString = 'Hey ' + profile.first_name + '! Your nearest trebles bar is ' + bar.name ', at ' + bar.location;
+            replyString = 'Hey ' + profile.first_name + '! Your nearest trebles bar is ' + bar.name + ', at ' + bar.location;
 
         } else {
             replyString = 'Hey ' + profile.first_name + '! I recommend ' + bar.name + '. It\'s pretty ' + bar.price + '. You can find it at ' + bar.location + '.';
