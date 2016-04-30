@@ -17,7 +17,7 @@ bot.on('error', (err) => {
 });
 
 bot.on('message', (payload, reply) => {
-  let text = payload.message.text;
+  //let text = payload.message.text;
 
   bot.getProfile(payload.sender.id, (err, profile) => {
       if (err) {
@@ -26,16 +26,16 @@ bot.on('message', (payload, reply) => {
       console.log('the person is: ' +  JSON.stringify(profile));
 
     var bar = getRandomBar();
-    var replyString = 'Hey! I recommend ' + bar.name + '. It\'s pretty ' + bar.price + '. You can find it at ' + bar.location + '.';
-    console.log('gonna send back: ' + replyString);
+    let text = 'Hey! I recommend ' + bar.name + '. It\'s pretty ' + bar.price + '. You can find it at ' + bar.location + '.';
+    console.log('gonna send back: ' + text);
 
 
-    reply({ replyString }, (err) => {
+    reply({ text }, (err) => {
       if (err) {
           console.log("error:" + JSON.stringify(err));
       }
 
-      console.log(`Echoed back to ${profile.first_name} ${profile.last_name}: ${replyString}`);
+      console.log(`Echoed back to ${profile.first_name} ${profile.last_name}: ${text}`);
   });
   });
 });
