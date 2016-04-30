@@ -52,9 +52,9 @@ function getOpenBars(){
   var date = new Date();
   var hour = date.getHours();
   var minutes = date.getMinutes();
-  var currentTime = hour + "" + minutes;
+  var currentTime = String(hour) + "" + String(minutes);
   var openBars;
-  
+
   //itterate through the bars array
   for(var i=0; i < bars.length; i++){
     //if we're past the openTime and before the closeTime
@@ -62,7 +62,7 @@ function getOpenBars(){
        openBars.push(bars[i]);
     }
   }
-  
+
   return openBars;
 }
 
@@ -72,7 +72,7 @@ function isOpen(startTime, endTime, currentTime){
     currentTime = currentTime + 24;
     endTime = endTime + 24;
   }
-  
+
   if(currentTime > startTime && currentTime < endTime){
     return true;
   }
