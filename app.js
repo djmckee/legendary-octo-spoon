@@ -65,25 +65,27 @@ bot.on('message', (payload, reply) => {
         var bar = getRandomFromArray(openBars);
 
         // Is it a location?
-        if (payload["message"]["attachments"][0]["type"] == "location") {
-            let location = payload["message"]["attachments"][0];
+        if (payload["message"]["attachments"] != null) {
+            if (payload["message"]["attachments"][0]["type"] == "location") {
+                let location = payload["message"]["attachments"][0];
 
-            let latitude = location["payload"]["coordinates"]["lat"];
-            let longitude = location["payload"]["coordinates"]["long"];
-            console.log('got location - latitude: ' + String(latitude) + ' longitude:' + String(longitude));
+                let latitude = location["payload"]["coordinates"]["lat"];
+                let longitude = location["payload"]["coordinates"]["long"];
+                console.log('got location - latitude: ' + String(latitude) + ' longitude:' + String(longitude));
 
-            bar = nearestBarToLocation(latitude, longitude);
+                bar = nearestBarToLocation(latitude, longitude);
 
-            if (bar == null) {
-                console.log('couldn\'t find found nearest bar');
+                if (bar == null) {
+                    console.log('couldn\'t find found nearest bar');
 
-                bar = getRandomFromArray();
-            } else {
-                console.log('found nearest bar');
+                    bar = getRandomFromArray();
+                } else {
+                    console.log('found nearest bar');
+                }
+
+                replyString = 'Hey ' + profile.first_name + '! Your nearest open bar is ' + bar.name + ', at ' + bar.location;
+
             }
-
-            replyString = 'Hey ' + profile.first_name + '! Your nearest trebles bar is ' + bar.name + ', at ' + bar.location;
-
         } else {
             replyString = 'Hey ' + profile.first_name + '! I recommend ' + bar.name + '. It\'s pretty ' + bar.price + '. You can find it at ' + bar.location + '.';
 
@@ -105,20 +107,25 @@ bot.on('message', (payload, reply) => {
 
 
 function nearestBarToLocation(lat, long) {
-    var bar = null;
+    var nearestBar = null;
     var location = {latitude: lat, longitude: long};
-    var shortestDistance = 100000000000;
-    for (var i = 0; i < bars.length; i++) {
-        var barN = bars[i];
-        var distance = geolib.getDistance(location, barN.locationLatLong);
+    var shortestDistance = 1000000000;
+
+    var openBars = getOpenBars();
+
+    for (var i = 0; i < openBars.length; i++) {
+        var bar = openBars[i];
+        var barLoc = bar.locationLatLong;
+        var distance = geolib.getDistance(location, barLoc);
 
         if (distance < shortestDistance) {
-            bar = barN;
+            nearestBar = bar;
+            shortestDistance = distance;
         }
 
     }
 
-    return bar;
+    return nearestBar;
 }
 
 // Sends all open bars as a formatted string in inidiviual messages
