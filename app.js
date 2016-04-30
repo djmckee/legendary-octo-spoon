@@ -35,7 +35,7 @@ bot.on('message', (payload, reply) => {
 
 //this function just returns a random bar object
 function getRandomBar(){
-  var randomIndex = Math.random(bars.length);
+  var randomIndex = Math.random() * bars.length;
   return bars[randomIndex];
 }
 
