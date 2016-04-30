@@ -25,7 +25,7 @@ bot.on('message', (payload, reply) => {
       }
       console.log('the person is: ' +  JSON.stringify(profile));
 
-    var bar = getRandomBar();
+    var bar = getRandomFromArray(getOpenBars());
     let text = 'Hey ' + profile.first_name + '! I recommend ' + bar.name + '. It\'s pretty ' + bar.price + '. You can find it at ' + bar.location + '.';
     console.log('gonna send back: ' + text);
 
@@ -40,11 +40,11 @@ bot.on('message', (payload, reply) => {
   });
 });
 
-//this function just returns a random bar object
-function getRandomBar(){
-  var randomIndex = Math.random() * bars.length;
+//this function just returns a random object from the array
+function getRandomFromArray(array){
+  var randomIndex = Math.random() * array.length;
   randomIndex = parseInt(randomIndex);
-  return bars[randomIndex];
+  return array[randomIndex];
 }
 
 //this function gets just the open bars and returns the array
