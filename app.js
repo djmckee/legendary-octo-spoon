@@ -240,7 +240,7 @@ function buildResponse(barObject){
             "elements": [{
                 "title": barObject.name,
                 "item_url": buildGoogleMapsUrl(barObject),
-                "image_url": barObject.image_url,
+                "image_url": barObject.imageUrl,
                 "buttons": [{
                     "type": "web_url",
                     "title": "Go here!",
@@ -256,7 +256,6 @@ function buildGoogleMapsUrl(barObject){
     var string;
 
     string = "https://www.google.co.uk/maps/place/";
-    
     var place = barObject.location + ", " + barObject.postcode;
     console.log(place);
     place = place.str.split(' ').join('+');
