@@ -222,16 +222,19 @@ function isOpen(startTime, endTime, currentTime){
 
 function buildResponse(barObject){
     var object = {
-        "template_type": "generic",
-        "elements": {
-            "title": barObject.name,
-            "item_url": "http://google.co.uk",
-            "image_url": "http://i.imgur.com/01AIyAd.jpg",
-            "buttons": [{
-                "type": "web_url",
-                "title": "Go here!",
-                "url": "http://google.co.uk"
-            }]
+        "type": "template",
+        "payload": {    
+            "template_type": "generic",
+            "elements": {
+                "title": barObject.name,
+                "item_url": "http://google.co.uk",
+                "image_url": "http://i.imgur.com/01AIyAd.jpg",
+                "buttons": [{
+                    "type": "web_url",
+                    "title": "Go here!",
+                    "url": "http://google.co.uk"
+                }]
+            }
         }
     };
     return object;
