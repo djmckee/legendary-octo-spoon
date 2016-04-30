@@ -94,12 +94,12 @@ bot.on('message', (payload, reply) => {
                 }
 
                 replyString = 'Hey ' + profile.first_name + '! Your nearest open bar is ' + bar.name + ', at ' + bar.location;
-                attachmentData = {attachment: buildResponse(bar)};
+                attachmentData = {attachment: buildResponse(bar, replyString)};
 
             }
         } else {
             replyString = 'Hey ' + profile.first_name + '! I recommend ' + bar.name + '. It\'s pretty ' + bar.price + '. You can find it at ' + bar.location + '.';
-            attachmentData = {attachment: buildResponse(bar)};
+            attachmentData = {attachment: buildResponse(bar, replyString)};
         }
 
     }
@@ -232,7 +232,7 @@ function isOpen(startTime, endTime, currentTime){
   }
 }
 
-function buildResponse(barObject){
+function buildResponse(barObject, replyString){
     var object = {
         "type": "template",
         "payload": {
@@ -241,6 +241,7 @@ function buildResponse(barObject){
                 "title": barObject.name,
                 "item_url": buildGoogleMapsUrl(barObject),
                 "image_url": barObject.imageUrl,
+                "subtitle": replyString,
                 "buttons": [{
                     "type": "web_url",
                     "title": "Go here!",
@@ -262,7 +263,7 @@ function buildGoogleMapsUrl(barObject){
     place = place.split(',').join('+');
     string = string + place;
     console.log(string);
-    
+
     return string;
 }
 
