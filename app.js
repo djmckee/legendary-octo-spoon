@@ -18,48 +18,32 @@ var bars = JSON.parse(fs.readFileSync("data.json"));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
-// uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+const http = require('http');
+const Bot = require('messenger-bot');
 
-app.use('/', routes);
-app.use('/users', users);
-
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
+let bot = new Bot({
+  token: 'PAGE_TOKEN',
+  verify: 'VERIFY_TOKEN',
+  app_secret: 'APP_SECRET'
 });
 
-// error handlers
-
-// development error handler
-// will print stacktrace
-if (app.get('env') === 'development') {
-  app.use(function(err, req, res, next) {
-    res.status(err.status || 500);
-    res.render('error', {
-      message: err.message,
-      error: err
-    });
-  });
-}
-
-// production error handler
-// no stacktraces leaked to user
-app.use(function(err, req, res, next) {
-  res.status(err.status || 500);
-  res.render('error', {
-    message: err.message,
-    error: {}
-  });
+bot.on('error', (err) => {
+  console.log(err.message);
 });
 
+bot.on('message', (payload, reply) => {
+  let text = payload.message.text;
+
+  bot.getProfile(payload.sender.id, (err, profile) => {
+    if (err) throw err
+
+    reply({ text }, (err) => {
+      if (err) throw err
+
+      console.log(`Echoed back to ${profile.first_name} ${profile.last_name}: ${text}`);
+  });
+  });
+});
 
 app.listen(3000, function () {
   console.log('Example app listening on port 3000!');
@@ -70,3 +54,6 @@ function getRandomBar(){
   var randomIndex = Math.random(data.length);
   return data[randomIndex]; 
 }
+
+http.createServer(bot.middleware()).listen(3000);
+console.log('Echo bot server running at port 3000.');
