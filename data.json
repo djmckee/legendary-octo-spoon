@@ -46,7 +46,8 @@
     "price": "medium",
     "description": "Very small trebles bar, frequented by Geordie Shore. Very expensive on weekends, but decent student offers Monday to Friday",
     "openFrom": "2100",
-    "closeAt": "0000"
+    "closeAt": "0000",
+    "locatingLatLong": {"latitude": 54.9704563, "longitude": -1.6110430999999608}
   },
 
   {
@@ -57,7 +58,7 @@
     "description": "LGBT-friendly bar, open late and popular with locals. Trebles vary depending on mixer, but house spirit + coke should be around £3.50",
     "openFrom": "2100",
     "closeAt": "0200",
-    "location": {"latitude": 55.5, "longitude": -1.6}
+    "locationLatLong": {"latitude": 54.96866499999999, "longitude": -1.6214635000000044}
   },
 
   {
@@ -67,7 +68,8 @@
     "price": "expensive",
     "description": "LGBT-friendly bar that's popular with both students and locals. Expect to pay £4 for a treble and it's right next to Digital!",
     "openFrom": "2000",
-    "closeAt": "0300"
+    "closeAt": "0300",
+    "locationLatLong": {"latitude": 54.9675588, "longitude": -1.6211926999999378}
   },
 
   {
@@ -77,6 +79,7 @@
     "price": "medium",
     "description": "Large trebles bar based in The Gate, cheap during the week, expensive on the weekend",
     "openFrom": "1900",
-    "closeAt": "0100"
+    "closeAt": "0100",
+    "locationLatLong": {"latitude": 54.9724747, "longitude": -1.6184438999999884} 
   }
 ]
