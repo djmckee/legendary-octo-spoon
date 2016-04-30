@@ -259,6 +259,7 @@ function buildGoogleMapsUrl(barObject){
     var place = barObject.location + ", " + barObject.postcode;
     console.log(place);
     place = place.split(' ').join('+');
+    place = place.split(',').join('+');
     string = string + place;
     console.log(string);
     
