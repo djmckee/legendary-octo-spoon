@@ -17,7 +17,7 @@ bot.on('error', (err) => {
 });
 
 bot.on('message', (payload, reply) => {
-  //let text = payload.message.text;
+  let messageText = payload.message.text;
 
   bot.getProfile(payload.sender.id, (err, profile) => {
       if (err) {
@@ -32,7 +32,22 @@ bot.on('message', (payload, reply) => {
     var date = new Date();
     var hour = date.getHours();
 
-    if (hour > 3 && hour < 7) {
+    let helpCommand = "help";
+    let allCommand = "all";
+    let everyCommand = "everything";
+    if (messageText.toLowerCase().indexOf(helpCommand) > -1) {
+        // Help...
+        replyString = 'This is the trebles bot; commands are:\n\'help\' - displays this menu\n\'all\' - all open bars\n\'everything\' - every bar (even closed ones!)';
+
+    } else if (messageText.toLowerCase().indexOf(allCommand) > -1) {
+        // Return all open bars
+        replyString = formattedOpenBars();
+
+    } else if (messageText.toLowerCase().indexOf(everyCommand) > -1){
+        // Return every bar, even closed ones
+        replyString = formattedAllBars();
+
+    } else if (hour > 3 && hour < 7) {
         replyString = 'Go home ' + profile.first_name + ' - you\'re drunk!';
     } else if (openBars.length == 0) {
         // :'(
@@ -56,6 +71,34 @@ bot.on('message', (payload, reply) => {
   });
   });
 });
+
+// Returns all open bars as a formatted string
+function formattedOpenBars() {
+    var string = 'These bars are open...\n';
+
+    var openBars = getOpenBars();
+
+    for (var i = 0; i < openBars.length; i++) {
+        var bar = openBars[i];
+        string += '\n' + bar.name + ' (' + bar.price + ') - ' + bar.location;
+    }
+
+    return string;
+
+}
+
+// Returns all bars as a formatted string
+function formattedAllBars() {
+    var string = 'Here\'s all the bars...\n';
+
+    for (var i = 0; i < bars.length; i++) {
+        var bar = bars[i];
+        string += '\n' + bar.name + ' (' + bar.price + ') - ' + bar.location;
+    }
+
+    return string;
+
+}
 
 //this function just returns a random object from the array
 function getRandomFromArray(array){
@@ -104,7 +147,7 @@ function isOpen(startTime, endTime, currentTime){
     currentTime = currentTime + 2400;
     endTime = endTime + 2400;
   }
-  
+
   if(endTime < 400){
     endTime = endTime + 2400;
   }
